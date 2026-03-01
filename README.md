@@ -1,0 +1,2 @@
+# FitBuddy-AI-Fitness-Plan-Generator-using-Gemini-Models
+FitBuddy is a web-based application that uses AI to generate personalized workout plans and nutrition tips based on a user’s fitness goals, such as weight loss, muscle gain, or general wellness. Built with FastAPI and integrated with Google’s Gemini AI models, FitBuddy simplifies the process of creating structured and effective fitness routines.
