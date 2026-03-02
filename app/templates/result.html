@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ user_name }}'s Custom Fitness Plan 🚀</h1>
+
+<div class="tip-box">
+    <h2 style="margin-top: 0;">💡 Pro Nutrition / Recovery Tip</h2>
+    {{ tip_html | safe }}
+</div>
+
+<div class="plan-box">
+    <h2 style="margin-top: 0;">📅 Your 7-Day Workout Routine</h2>
+    {{ plan_html | safe }}
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2>🔄 Want to adjust this plan?</h2>
+<p>Tell FitBuddy what you want to change (e.g., "Add more cardio," "Make it harder," "I only have dumbbells").</p>
+
+<form action="/feedback/{{ plan_id }}" method="post">
+    <div class="form-group">
+        <textarea id="feedback" name="feedback" rows="4" placeholder="Enter your suggestions here..."
+            required></textarea>
+    </div>
+    <button type="submit" class="btn" style="background-color: #3498db;">Update My Plan</button>
+</form>
+
+<br><br>
+<a href="/">← Create a new profile</a>
+{% endblock %}

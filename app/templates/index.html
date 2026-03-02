@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to FitBuddy AI 🏋️‍♂️</h1>
+<p>Enter your details below to generate your personalized 7-day workout and nutrition plan.</p>
+
+<form action="/generate" method="post">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="e.g., Alex" required>
+    </div>
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="1" max="120" required>
+    </div>
+    <div class="form-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.1" min="1" required>
+    </div>
+    <div class="form-group">
+        <label for="goal">Fitness Goal:</label>
+        <select id="goal" name="goal" required>
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Muscle Gain">Muscle Gain</option>
+            <option value="General Wellness">General Wellness</option>
+            <option value="Endurance">Endurance</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="intensity">Preferred Intensity:</label>
+        <select id="intensity" name="intensity" required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+    <button type="submit" class="btn">Generate My Plan</button>
+</form>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .plan-section {
+        margin-top: 15px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .original-plan {
+        background-color: #f1f8ff;
+        border-left: 5px solid #0366d6;
+    }
+
+    .latest-plan {
+        background-color: #f6f8fa;
+        border-left: 5px solid #28a745;
+        border: 1px solid #e1e4e8;
+    }
+
+    .admin-user-card {
+        margin-top: 20px;
+        border: 1px solid #ddd;
+        padding: 25px;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+</style>
+
+<h1>Admin Dashboard - All Users</h1>
+<p><a href="/">&larr; Back to Generator</a></p>
+
+{% if users %}
+{% for user in users %}
+<div class="admin-user-card">
+    <h2>User: {{ user.name }}</h2>
+    <p><strong>Age:</strong> {{ user.age }} | <strong>Weight:</strong> {{ user.weight }}kg</p>
+    <p><strong>Goal:</strong> {{ user.goal }} | <strong>Intensity:</strong> {{ user.intensity }}</p>
+
+    <hr>
+    <h3>Workout Plans</h3>
+    {% if user.plans %}
+    {% for plan in user.plans %}
+    <div class="plan-box" style="margin-bottom: 20px; padding: 15px; border: 1px solid #eee;">
+        <p><strong>Plan ID:</strong> {{ plan.id }}</p>
+
+        <details>
+            <summary><strong>Original Workout Plan</strong></summary>
+            <div class="plan-section original-plan" style="white-space: pre-wrap; font-size: 0.9em;">
+                {{ plan.original_plan_content }}
+            </div>
+        </details>
+
+        <details open style="margin-top: 10px;">
+            <summary><strong>Latest Workout Plan</strong> (Updated via Feedback)</summary>
+            <div class="plan-section latest-plan" style="white-space: pre-wrap;">
+                {{ plan.plan_content }}
+            </div>
+        </details>
+
+        <details style="margin-top: 10px;">
+            <summary><strong>Nutrition Tip</strong></summary>
+            <div class="tip-box" style="margin: 10px 0; font-style: italic;">
+                {{ plan.nutrition_tip }}
+            </div>
+        </details>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No plans generated for this user yet.</p>
+    {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<p>No users found in the database.</p>
+{% endif %}
+{% endblock %}
